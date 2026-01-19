@@ -177,7 +177,25 @@ Then print the content of your public key
 ```sh
 cat ~/.ssh/id_ed25519.pub
 ```
-and copy it into your clipboard.
+and copy it into your clipboard. You'll need this for the [GitHub](#github) setup.
+
+Open (or create) your ssh config
+```sh
+nano ~/.ssh/config
+```
+and add the following entry:
+```ssh_config
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+```
+
+After you added your public key on GitHub, you can test this config with
+```sh
+ssh -T git@github.com
+```
 
 ### GitHub
 
